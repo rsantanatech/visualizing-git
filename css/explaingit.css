@@ -168,7 +168,7 @@ span.cmd {
   padding-left: 15px;
   color: #FFF;
   line-height: 14px;
-  background: url(../images/prompt.gif) no-repeat left top black;
+  background: url(../images/prompt.gif) no-repeat left center black;
 }
 
 .control-box input[type="text"] {
@@ -321,4 +321,63 @@ g.head-tag > text {
   font-family: Arial;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+/* Mobile/portrait view */
+
+@media screen and (max-width: 767px), (max-device-width: 1920px) and (orientation: portrait) {
+	.playground-container {
+		display: flex;
+    	flex-flow: column;
+	}
+
+	.control-box {
+		position: relative;
+		width: 100%;
+		flex: 1 1 33%;
+		order: 1;
+		display: flex;
+		flex-flow: column;
+		overflow: hidden;
+	}
+
+	.control-box input {
+		width: calc(100% - 15px) !important;
+    	font-size: 16px !important;
+    	position: relative !important;
+	}
+
+	.control-box .log {
+		position: relative;
+		order: 2;
+		height: 100%;
+		top: 0;
+		bottom: 0;
+	}
+
+	.scenario-chooser {
+		position: relative !important;
+		left: 0 !important;
+		top: 0 !important;
+	}
+
+	.svg-container {
+		position: relative !important;
+		width: 100%;
+		flex: 1 1 33%;
+		left: 0 !important;
+		min-height: auto !important;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-device-width: 1920px) and (orientation: portrait) {
+    body, .control-box .log, .control-box .log div {
+        font-size: 24px !important;
+		line-height: 2em !important;
+    }
+
+	.control-box input {
+		font-weight: bold;
+		font-size: 35px !important;
+	}
 }
