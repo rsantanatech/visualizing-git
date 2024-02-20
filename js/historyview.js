@@ -258,7 +258,7 @@ define(['d3'], function() {
     this.currentBranch = config.currentBranch || 'master';
 
     this.width = config.width;
-    this.height = config.height || 400;
+    this.height = 400;
     this.orginalBaseLine = config.baseLine;
     this.baseLine = this.height * (config.baseLine || 0.9);
 
@@ -528,7 +528,7 @@ define(['d3'], function() {
 
       svg.attr('id', this.name)
         .attr('width', this.width)
-        .attr('height', this.isRemote ? this.height + 150 : this.height);
+        .attr('height', this.height + 150);
 
       if (this.isRemote) {
         svg.append('svg:text')
@@ -603,12 +603,14 @@ define(['d3'], function() {
         var perc = this.height.substring(0, this.height.length - 1) / 100.0;
         var baseLineCalcHeight = Math.round(this.svg.node().parentNode.offsetHeight * perc) - 65;
         var newBaseLine = Math.round(baseLineCalcHeight * (this.originalBaseLine || 0.6));
+
         if (newBaseLine !== this.baseLine) {
           this.baseLine = newBaseLine;
           this.initialCommit.cy = newBaseLine;
           this.svg.attr('height', baseLineCalcHeight);
         }
       }
+
       this._calculatePositionData();
       this._calculatePositionData(); // do this twice to make sure
       this._renderCircles();
